@@ -1,0 +1,234 @@
+\documentclass[twocolumn]{aastex63}
+
+\bibliographystyle{aasjournal}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{hyperref}
+%\usepackage{datetime}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[normalem]{ulem}
+\usepackage{bm}
+\usepackage{comment}
+% additions for ease of tabling
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+% colors
+%\usepackage[usenames, dvipsnames]{color}
+
+%\usepackage{pdflscape}
+\usepackage{xcolor, fontawesome}
+\definecolor{twitterblue}{RGB}{64,153,255}
+\newcommand{\twitter}[1]{\href{https://twitter.com/#1 }{\textcolor{twitterblue}{\faTwitter}\,\tt \textcolor{twitterblue}{@#1}}}
+
+\definecolor{Code}{rgb}{0,0,0}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}
+\definecolor{Numbers}{rgb}{0.5,0,0}
+\definecolor{MatchingBrackets}{rgb}{0.25,0.5,0.5}
+\definecolor{Keywords}{rgb}{1,0,0}
+\definecolor{self}{rgb}{0,0,0}
+\definecolor{Strings}{rgb}{0,0.63,0}
+\definecolor{Comments}{rgb}{0,0.63,1}
+\definecolor{Backquotes}{rgb}{0,0,0}
+\definecolor{Classname}{rgb}{0,0,0}
+\definecolor{FunctionName}{rgb}{0,0,0}
+\definecolor{Operators}{rgb}{0,0,0}
+\definecolor{Background}{rgb}{0.98,0.98,0.98}
+\definecolor{Booleans}{rgb}{0.572,0,0.572}
+\definecolor{BuiltinFunction}{rgb}{0.572,0,0.572}
+\definecolor{BuiltinConstant}{rgb}{0.572,0,0.572}
+\definecolor{Asterisk}{rgb}{0.670,0,1}
+
+\lstdefinelanguage{Python}{
+        numbers=left,
+        numberstyle=\footnotesize,
+        numbersep=7pt,
+        xleftmargin=1.26em,
+        framextopmargin=2em,
+        framexbottommargin=2em,
+        showspaces=false,
+        showtabs=false,
+        showstringspaces=false,
+        frame=l,
+        tabsize=4,
+        stepnumber=1,
+    % Basic
+    basicstyle=\small\ttfamily,
+        backgroundcolor=\color{Background},
+%        breaklines=True,
+%        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    % Comments
+%    commentstyle=\color{green}\ttfamily,
+    % Strings
+%        stringstyle=\ttfamily\color{Strings},
+%        morecomment=[s][\color{Strings}]{'}{'}, 
+%        stringstyle=\ttfamily\color{Comments},
+%        morecomment=[s][\color{Comments}]{\#}{\#},             
+    % Keywords
+    stringstyle=\ttfamily\color{Strings},
+    morekeywords={import,from,class,def,while,if,in,elif,else,not,or,print,break,continue,return,access,as,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+        keywordstyle={\color{Keywords}\bfseries}, 
+    %    morekeywords={[2]True,False,None},
+    %    keywordstyle={[2]\color{BuiltinConstant}\slshape},
+    otherkeywords={[2]*},
+    keywordstyle={[2]\color{Asterisk}},
+%    emph={self},
+%    emphstyle={\color{self}\slshape}    
+}
+
+\usepackage{color}
+
+\newcommand{\ron}{\color{red}} 
+\newcommand{\bon}{\color{blue}} 
+\newcommand{\gon}{\color{green}} 
+\newcommand{\coff}{\color{black}\,}
+\newcommand{\shrug}{\texttt{\raisebox{0.75em}{\char`\_}\char`\\\char`\_\kern-0.5ex(\kern-0.25ex\raisebox{0.25ex}{\rotatebox{45}{\raisebox{-.75ex}"\kern-1.5ex\rotatebox{-90})}}\kern-0.5ex)\kern-0.5ex\char`\_/\raisebox{0.75em}{\char`\_}}}
+
+
+\newcommand{\rprs}{{$R_p/R_{\star}$}}
+
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\kep}{{\it Kepler}}
+\newcommand{\kt}{{\it K2}}
+\newcommand{\tess}{{\it TESS}}
+\newcommand{\ffis}{Full-Frame Images}
+\newcommand{\fulltess}{{\it Transiting Exoplanet Survey Satellite}}
+\newcommand{\Gaia}{{\it Gaia}}
+\newcommand{\spitz}{{\it Spitzer}}
+\newcommand{\vsini}{{$v \sin i$}}
+\newcommand{\teff}{$T_{ eff}$}
+\newcommand{\kms}{{km\,s$^{-1}$}}
+\newcommand{\gcc}{{g\,cm$^{-3}$}}
+\newcommand{\rstar}{{$R_\star$}}
+\newcommand{\rhostar}{{$\rho_\star$}}
+\newcommand{\mearth}{{M$_\oplus$}}
+\newcommand{\rearth}{{R$_\oplus$}}
+\newcommand{\rsun}{{R$_\odot$}}
+\newcommand{\msun}{{M$_\odot$}}
+\newcommand{\mjup}{{M$_\textrm{Jup}$}}
+\newcommand{\rjup}{{R$_\textrm{Jup}$}}
+
+\newcommand{\eleanor}{\texttt{eleanor}}
+
+\newcommand{\mstar}{{$M_\star$}}
+\newcommand{\logg}{{log(g)}}
+\newcommand{\mh}{{[M/H]}~}
+\newcommand{\feh}{{[Fe/H]}~}
+%\newcommand{\h2ok2}{{$ H_2O-K2$}}
+
+\newcommand{\todo}[3]{{\color{#2} \emph{#1} TO DO: #3}}
+\newcommand{\btmtodo}[1]{\todo{BEN}{blue}{#1}}
+\newcommand{\anytodo}[1]{\todo{ANYONE}{green}{#1}}
+
+\newcommand{\comm}[1]{{\color{cyan}{#1}}}
+
+\newcommand{\Sph}{{$S_{\textrm{ph}}$}}
+\newcommand{\RHK}{{$R'_{\textrm{HK}}$}}
+
+\newcommand{\unsw}{School of Physics, University of New South Wales, Sydney, NSW 2052, Australia}
+
+
+\newcommand{\ut}{UT Austin, USA}
+
+
+%\submitted{for May 2, 2016}
+
+\begin{document}
+\title{VHS 1256 Paper}
+
+\shorttitle{VHS 1256 Paper To be Named} 
+\shortauthors{Montet et al.}
+
+
+\author[0000-0001-7516-8308]{Benjamin~T.~Montet}
+\affiliation{\unsw}
+
+
+\author[]{Yifan Zhou}
+\affiliation{\ut}
+
+\author[]{Brendan P. Bowler}
+\affiliation{\ut}
+
+
+\correspondingauthor{Benjamin~T.~Montet; \twitter{benmontet}}
+\email{b.montet@unsw.edu.au}
+
+%@arxiver{f8a.pdf,f5.pdf,f2b.pdf}
+%\date{\today, \currenttime}
+
+\begin{abstract}
+
+\btmtodo{Abstract goes here}
+\end{abstract}
+
+\keywords{Starspots (1572)}
+
+
+ 
+\section{Introduction} \label{sec:intro}
+
+Words
+
+
+
+%\begin{figure}[!tbh]
+%  \begin{center}
+%    \includegraphics[width=0.5\textwidth, trim={0cm 0.0cm 0cm 0cm}, clip=true]{example-image}
+%   \end{center}
+%  \caption{Test figure}
+%  \label{fig:data}
+%\end{figure}
+
+
+
+
+
+\acknowledgements
+
+We thank \btmtodo{people} for \btmtodo{things}.
+
+
+
+
+
+
+This paper includes data collected by the \tess\ mission. Funding for the \tess\ mission is provided by the NASA Explorer Program.
+
+\tess\ data were obtained from the Mikulski Archive for Space Telescopes
+(MAST).
+STScI is operated by the Association of Universities for Research in
+Astronomy, Inc., under NASA contract NAS5-26555.
+Support for MAST is provided by the NASA Office of Space Science via grant
+NNX13AC07G and by other grants and contracts.
+
+
+
+\software{%
+    numpy \citep{numpy},
+    matplotlib \citep{matplotlib},
+    scipy \citep{Jones01}
+    astropy \citep{Astropy18},
+    eleanor \citep{Feinstein19},
+    starry \citep{Luger19},
+    emcee \citep{Foreman-Mackey12}
+    }
+
+\facilities{TESS}
+
+
+
+
+\bibliography{exopapers}
+
+
+
+
+
+
+\end{document}
+
